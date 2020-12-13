@@ -1,5 +1,3 @@
-local config = require "../config"
-
 conky.config = {
 	alignment = 'top_right',
   background = false,
@@ -14,7 +12,7 @@ conky.config = {
   draw_outline = false,
   draw_shades = false,
   gap_x = 60 ,
-  gap_y = 150,
+  gap_y = 170,
   max_user_text = 10000,
   maximum_width = 900,
   net_avg_samples = 2,
@@ -41,7 +39,6 @@ conky.config = {
 
 conky.text = [[
   ${color white}
-  $alignr ${font Adele:size=22}Today
-  $alignr ${font Adele:size=90}${time %H:%M}
-  ${voffset -80}${font Adele:size=22}${time %A, %d %B}
+  $alignr${offset 10}${font Adele:size=90}${time %H:%M}
+  $alignr${voffset -80}${font Adele:size=22}${time %A, %d %B}
 ]];

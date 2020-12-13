@@ -1,10 +1,12 @@
 # SSUI Conky
 
-SSUI is a modular conky suite.
+SSUI is a modular conky suite with the minimalistic and clean design in focus.
+
 It consists of following modules:
 - Clock
 - Spotify
 - System
+- Weather
 
 Use config file to enable/disable widgets.
 
@@ -23,6 +25,10 @@ Use config file to enable/disable widgets.
 
 ![alt text](assets/system.jpg "System")
 
+## Weather
+
+![alt text](assets/weather.jpg "Weather")
+
 ## Full
 
 ![alt text](assets/full.jpg "Full")
@@ -35,11 +41,12 @@ Use config file to enable/disable widgets.
 - lua 5.4 (it may work on older version, but it is not tested)
 - font Adele (can be found in `assets` directory)
 
-| Module  | Requirements |
-| ------  | ------------ |
-| clock   | -            |
-| spotify | spotify      |
-| system  | -            |
+| Module  | Requirements                            |
+| ------  | --------------------------------------- |
+| clock   | -                                       |
+| spotify | spotify                                 |
+| system  | -                                       |
+| weather | luajson, luasocket, openweather api key |
 
 
 # Install
@@ -55,13 +62,16 @@ Run `install.sh` (check if you have execution permission) or do it manually.
 
 Before running SSUI you maybe want to configure it.
 
-Update entries `config.lua` to enable or disable some module.
+Update `config.lua`.
 
 ```lua
 return {
-  clock = true, 
-  system = true, -- change it to false maybe?
-  spotify = true
+  modules = {'clock', 'system', 'spotify', 'weather'}, -- list of enabled modules
+  weather = { -- options for weather module
+    api_key = '<API_KEY>', -- from https://openweathermap.org/api
+    city_id = '<CITY_ID>' -- from https://openweathermap.org/api,
+    unit = '<UNIT_OF_MEASURE>' -- <metric | imperial>
+  }
 }
 ```
 
@@ -75,7 +85,7 @@ Run `start.sh`. Simple as that.
 
 ## Autostart [Manjaro KDE Example]
 
-You would probably like to start it automatically so here is what you can do.
+You would probably like to start it automatically on startup so here is what you can do.
 
 *Note*: you may need to make some changes to suit yourself.
 
@@ -97,3 +107,8 @@ Type=Application
 
 ```
 3. Done
+
+
+# Changelog
+
+Complete changelog available at [link](CHANGELOG.md).

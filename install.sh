@@ -11,13 +11,12 @@ then
   then
     echo "Installing canceled..."  
     exit
-  else
-    rm -r ${folder}
   fi
+else
+  mkdir $folder
 fi
 
 echo "Installing..."
-mkdir $folder
 cp -r * $folder
 chmod +x $folder/start.sh
 echo "Installing done"

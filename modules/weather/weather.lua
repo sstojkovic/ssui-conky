@@ -12,7 +12,8 @@ conky.config = {
   draw_outline = false,
   draw_shades = false,
   gap_x = 60,
-  gap_y = 285,
+  gap_y = 140,
+  font = 'Adele:size=18',
   max_user_text = 10000,
   maximum_width = 900,
   net_avg_samples = 2,
@@ -38,10 +39,6 @@ conky.config = {
 }
 
 conky.text = [[
-  ${if_running spotify}
   ${color white}
-  $alignr ___
-  $alignr${font Adele Medium:size=22}${exec modules/spotify/scripts/artist.sh}
-  $alignr${font Adele:size=22}${exec modules/spotify/scripts/title.sh}
-  ${endif}
+  $alignr ${execpi 1800 modules/weather/scripts/fetch-weather.lua}
 ]];

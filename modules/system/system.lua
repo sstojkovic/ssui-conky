@@ -1,5 +1,3 @@
-local config = require "../config"
-
 conky.config = {
 	alignment = 'top_left',
   background = false,
@@ -41,8 +39,8 @@ conky.config = {
 
 conky.text = [[
   ${color white}
-  ${font Adele:size=22}Systems
-  ${voffset 8}${font Adele Medium:size=15}CPU: ${font Adele:size=15}${cpu cpu0}%/100%
+  ${font Adele:size=22}System
+  ${voffset 0}${font Adele Medium:size=15}CPU: ${font Adele:size=15}${cpu cpu0}%/100%
   ${voffset 6}${font Adele Medium:size=15}RAM: ${font Adele:size=15}${mem}/${memmax}
   ${voffset 6}${font Adele Medium:size=15}DISK: ${font Adele:size=15}${fs_used}/${fs_size}
   ${voffset 6}${font Adele Medium:size=15}SYS: ${font Adele:size=15}${kernel}
