@@ -2,23 +2,19 @@
 
 -- Original script source: https://gist.github.com/meskarune/5729e8d6c8428e9c70a72bed475db4e1
 
--- load the http socket module
-http = require("socket.http")
--- load the json module
 json = require("json")
--- load config module
 config = require("config")
 
 api_url = "http://api.openweathermap.org/data/2.5/weather?"
 
 -- http://openweathermap.org/help/city_list.txt , http://openweathermap.org/find
-cityid = config.weather.city_id
+city_id = config.weather.city_id
 
 -- metric or imperial
 cf = config.weather.unit
 
 -- get an open weather map api key: http://openweathermap.org/appid
-apikey = config.weather.api_key
+api_key = config.weather.api_key
 
 -- measure is °C if metric and °F if imperial
 measure = '°' .. (cf == 'metric' and 'C' or 'F')
@@ -52,10 +48,33 @@ makecache = function (s)
     cache:write(save)
 end
 
+capture = function(cmd, raw)
+    local handle = assert(io.popen(cmd, 'r'))
+    local output = assert(handle:read('*a'))
+    
+    handle:close()
+    
+    if raw then 
+        return output 
+    end
+   
+    output = string.gsub(
+        string.gsub(
+            string.gsub(output, '^%s+', ''), 
+            '%s+$', 
+            ''
+        ), 
+        '[\n\r]+',
+        ' '
+    )
+   
+   return output
+end
+
 if timepassed < 3600 then
     response = data
 else
-    weather = http.request(("%sid=%s&units=%s&APPID=%s"):format(api_url, cityid, cf, apikey))
+    weather = capture(string.format("curl -L \'%sid=%s&units=%s&APPID=%s\'", api_url, city_id, cf, api_key))
     if weather then
         response = json.decode(weather)
         makecache(response)
@@ -72,6 +91,6 @@ temp = response.main.temp
 conditions = response.weather[1].main
 icon = response.weather[1].icon:sub(1, 2)
 
-io.write(("${font Adele Medium:size=18}%s%s ${font}| %s\n"):format(math.round(temp), measure, conditions))
+io.write(("${color %s}${font %s:size=18}%s%s ${font}| %s\n"):format(config.color, config.font, math.round(temp), measure, conditions))
 
 cache:close()

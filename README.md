@@ -13,25 +13,8 @@ Use config file to enable/disable widgets.
 
 # Preview
 
-## Clock
 
-![alt text](assets/clock.jpg "Clock")
-
-## Spotify
-
-![alt text](assets/spotify.jpg "Spotify")
-
-## System
-
-![alt text](assets/system.jpg "System")
-
-## Weather
-
-![alt text](assets/weather.jpg "Weather")
-
-## Full
-
-![alt text](assets/full.jpg "Full")
+![alt text](preview.jpg "Preview")
 
 
 # Requirements
@@ -39,21 +22,20 @@ Use config file to enable/disable widgets.
 ## General requirements 
 - conky 1.11 (it may work on older version, but it is not tested)
 - lua 5.4 (it may work on older version, but it is not tested)
-- font Adele (can be found in `assets` directory)
 
 | Module  | Requirements                            |
 | ------  | --------------------------------------- |
 | clock   | -                                       |
 | spotify | spotify                                 |
 | system  | -                                       |
-| weather | luajson, luasocket, openweather api key |
+| weather | luajson, openweather api key            |
 
 
 # Install
 
 SSUI is expected to be installed in `~/.conky/ssui`.
 
-Run `install.sh` (check if you have execution permission) or do it manually.
+Run `install.sh` (check if you have execution permission) or do it manually (just create copy files there).
 
 
 # Usage
@@ -67,6 +49,8 @@ Update `config.lua`.
 ```lua
 return {
   modules = {'clock', 'system', 'spotify', 'weather'}, -- list of enabled modules
+  color = '#2C3E50', -- hex value for text color
+  font = 'Roboto', -- name of font (it should be installed on your system)
   weather = { -- options for weather module
     api_key = '<API_KEY>', -- from https://openweathermap.org/api
     city_id = '<CITY_ID>' -- from https://openweathermap.org/api,

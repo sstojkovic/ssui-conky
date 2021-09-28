@@ -1,5 +1,12 @@
 # Changelog
 
+# v1.2.0 [2021-09-28]
+
+## Added customization
+
+- Text color
+- Font family
+
 # v1.1.0 [2020-12-13]
 
 ## Added **weather** module

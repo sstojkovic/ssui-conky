@@ -1,5 +1,8 @@
+core = require('core');
+config = require('config');
+
 conky.config = {
-	alignment = 'top_left',
+  alignment = 'top_left',
   background = false,
   border_width = 5,
   cpu_avg_samples = 2,
@@ -37,11 +40,11 @@ conky.config = {
   own_window_argb_visual = true
 }
 
-conky.text = [[
-  ${color white}
-  ${font Adele:size=22}System
-  ${voffset 0}${font Adele Medium:size=15}CPU: ${font Adele:size=15}${cpu cpu0}%/100%
-  ${voffset 6}${font Adele Medium:size=15}RAM: ${font Adele:size=15}${mem}/${memmax}
-  ${voffset 6}${font Adele Medium:size=15}DISK: ${font Adele:size=15}${fs_used}/${fs_size}
-  ${voffset 6}${font Adele Medium:size=15}SYS: ${font Adele:size=15}${kernel}
-]];
+conky.text = interp([[
+  ${color #{color}}
+  ${font #{font}:bold:size=15}CPU: ${font #{font}:light:size=15}${cpu cpu0}${offset -5}% / 100%
+  ${font #{font}:bold:size=15}RAM: ${font #{font}:light:size=15}${mem} / ${memmax}
+  ${font #{font}:bold:size=15}DISK: ${font #{font}:light:size=15}${fs_used} / ${fs_size}
+  ${font #{font}:bold:size=15}UPTIME: ${font #{font}:light:size=15}${uptime}
+  ${font #{font}:bold:size=15}KERNEL: ${font #{font}:light:size=15}${kernel}
+]], {color = config.color, font = config.font});

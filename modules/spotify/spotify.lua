@@ -1,5 +1,8 @@
+core = require('../../core');
+config = require('../../config');
+
 conky.config = {
-	alignment = 'top_right',
+  alignment = 'top_right',
   background = false,
   border_width = 5,
   cpu_avg_samples = 2,
@@ -37,11 +40,11 @@ conky.config = {
   own_window_argb_visual = true
 }
 
-conky.text = [[
+conky.text = interp([[
   ${if_running spotify}
-  ${color white}
-  $alignr ___
-  $alignr${font Adele Medium:size=22}${exec modules/spotify/scripts/artist.sh}
-  $alignr${font Adele:size=22}${exec modules/spotify/scripts/title.sh}
+  ${color #{color}}
+  $alignr${font #{font}:bold} ___
+  $alignr${font #{font}:bold:size=22}${exec modules/spotify/scripts/artist.sh}
+  $alignr${font #{font}:light:size=20}${exec modules/spotify/scripts/title.sh}
   ${endif}
-]];
+]], {color = config.color, font = config.font});

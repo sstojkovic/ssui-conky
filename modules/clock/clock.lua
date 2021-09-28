@@ -1,5 +1,8 @@
+core = require('../../core');
+config = require('../../config');
+
 conky.config = {
-	alignment = 'top_right',
+  alignment = 'top_right',
   background = false,
   border_width = 5,
   cpu_avg_samples = 2,
@@ -37,8 +40,8 @@ conky.config = {
   own_window_argb_visual = true
 }
 
-conky.text = [[
-  ${color white}
-  $alignr${offset 10}${font Adele:size=90}${time %H:%M}
-  $alignr${voffset -80}${font Adele:size=22}${time %A, %d %B}
-]];
+conky.text = interp([[
+  ${color #{color}}
+  $alignr${offset 10}${font #{font}:size=64}${time %H:%M}
+  $alignr${voffset -80}${offset 2}${font #{font}:light:size=18}${time %A, %d %B}
+]], {color = config.color, font = config.font});
