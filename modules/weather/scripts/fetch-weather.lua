@@ -91,6 +91,6 @@ temp = response.main.temp
 conditions = response.weather[1].main
 icon = response.weather[1].icon:sub(1, 2)
 
-io.write(("${color %s}${font %s:size=18}%s%s ${font}| %s\n"):format(config.color, config.font, math.round(temp), measure, conditions))
+io.write(("${color %s}${font %s:size=18}%s%s ${font %s:light:size=18}| %s\n"):format(config.color, config.font, math.round(temp), measure, config.font, conditions))
 
 cache:close()

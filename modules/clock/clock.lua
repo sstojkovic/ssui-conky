@@ -1,5 +1,5 @@
-core = require('../../core');
-config = require('../../config');
+core = require('core');
+config = require('config');
 
 conky.config = {
   alignment = 'top_right',
@@ -15,7 +15,7 @@ conky.config = {
   draw_outline = false,
   draw_shades = false,
   gap_x = 60 ,
-  gap_y = 170,
+  gap_y = 155,
   max_user_text = 10000,
   maximum_width = 900,
   net_avg_samples = 2,

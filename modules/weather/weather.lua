@@ -1,5 +1,5 @@
 conky.config = {
-	alignment = 'top_right',
+  alignment = 'top_right',
   background = false,
   border_width = 5,
   cpu_avg_samples = 2,
@@ -13,7 +13,6 @@ conky.config = {
   draw_shades = false,
   gap_x = 60,
   gap_y = 140,
-  font = 'Adele:size=18',
   max_user_text = 10000,
   maximum_width = 900,
   net_avg_samples = 2,
