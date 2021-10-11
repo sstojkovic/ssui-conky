@@ -1,5 +1,13 @@
 # Changelog
 
+# v1.2.1 [2021-10-11]
+
+## Bugs
+- Function interp is public now
+
+## Features
+- Positions of widgets are adjusted
+
 # v1.2.0 [2021-09-28]
 
 ## Added customization
